@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Response;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
 
         \Blade::directive("custom",function ($arg){
             return "<".$arg.">";
+        });
+
+        Response::macro("HomeMessage",function ($arg){
+            return Response::make("505 INFO ".strtoupper($arg));
         });
     }
 }
